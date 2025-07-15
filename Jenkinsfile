@@ -3,10 +3,11 @@ pipeline {
 
     environment {
         NODE_ENV = 'development'
+        IMAGE_NAME = 'my-node-app'
     }
 
     tools {
-        nodejs 'Nodejs'  // Make sure this matches a configured NodeJS tool in Jenkins
+        nodejs 'Nodejs' 
     }
 
     stages {
@@ -19,6 +20,16 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def imageTag = "${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker build -t ${imageTag} ."
+                    echo "Docker image ${imageTag} built successfully."
+                }
             }
         }
 
