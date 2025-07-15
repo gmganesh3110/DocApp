@@ -6,7 +6,7 @@ pipeline {
     }
 
     tools {
-        nodejs 'NodeJS_18'  // Make sure this matches a configured NodeJS tool in Jenkins
+        nodejs 'Nodejs'  // Make sure this matches a configured NodeJS tool in Jenkins
     }
 
     stages {
