@@ -28,7 +28,7 @@ pipeline {
                 sh 'echo $PATH'
                 sh 'which docker'
                 sh 'docker --version'
-            } 
+            }
         }
 
         stage('Build Docker Image') {
