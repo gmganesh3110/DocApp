@@ -4,10 +4,11 @@ pipeline {
     environment {
         NODE_ENV = 'development'
         IMAGE_NAME = 'my-node-app'
+        PATH = "/usr/local/bin:${env.PATH}"  // ⬅️ This ensures Docker is found
     }
 
     tools {
-        nodejs 'Nodejs' 
+        nodejs 'Nodejs'
     }
 
     stages {
@@ -47,8 +48,6 @@ pipeline {
             }
             steps {
                 echo 'Deploying to production...'
-                // Example:
-                // sh './deploy.sh'
             }
         }
     }
