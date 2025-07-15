@@ -23,6 +23,14 @@ pipeline {
             }
         }
 
+        stage('Debug PATH') {
+            steps {
+                sh 'echo $PATH'
+                sh 'which docker'
+                sh 'docker --version'
+            } 
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
